@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Marketing with Muse Action Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#011635;
+    --navy-2:#0a2450;
+    --gold:#B99446;
+    --gold-dark:#9a7c34;
+    --white:#ffffff;
+    --bg:#f6f5f1;
+    --card:#ffffff;
+    --ink:#011635;
+    --muted:#4a5568;
+    --line:#e3ddcf;
+    --prompt-bg:#fbfaf6;
+    --prompt-ink:#1c2b45;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#050e21;
+      --card:#0a1c3a;
+      --ink:#f2ecdd;
+      --muted:#b9c2d4;
+      --line:#2a3d63;
+      --prompt-bg:#071329;
+      --prompt-ink:#eef1f7;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"DM Sans", system-ui, -apple-system, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--navy);
+    color:var(--white);
+    text-align:center;
+    padding:34px 20px 40px;
+    border-bottom:4px solid var(--gold);
+  }
+  .brand{
+    font-family:"DM Sans",sans-serif;
+    font-weight:700;
+    letter-spacing:.32em;
+    font-size:.82rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin:0 0 18px;
+  }
+  .brand a{
+    color:inherit;
+    text-decoration:none;
+  }
+  .brand a:hover{text-decoration:underline;text-underline-offset:4px}
+  .brand a:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+  footer .foot-brand a{color:inherit;text-decoration:none}
+  footer .foot-brand a:hover{text-decoration:underline;text-underline-offset:3px}
+  footer .copyright{margin:8px 0 0}
+  header h1{
+    font-family:"Playfair Display", Georgia, serif;
+    font-weight:800;
+    font-size:clamp(2rem, 6vw, 3.1rem);
+    line-height:1.12;
+    margin:0 auto 10px;
+    max-width:700px;
+  }
+  .subtitle{
+    font-family:"Playfair Display", Georgia, serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(1.25rem, 3.5vw, 1.6rem);
+    color:var(--gold);
+    margin:0 0 22px;
+  }
+  .rule{width:64px;height:3px;background:var(--gold);margin:0 auto 22px;border-radius:2px}
+  .top-instruction{
+    display:inline-block;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(185,148,70,.65);
+    color:var(--white);
+    border-radius:999px;
+    padding:10px 22px;
+    font-size:1rem;
+    font-weight:600;
+    max-width:640px;
+  }
+  .top-instruction strong{color:var(--gold)}
+
+  /* ---------- Tool cards ---------- */
+  .tool{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:28px 28px 30px;
+    margin-top:28px;
+    box-shadow:0 2px 10px rgba(1,22,53,.05);
+  }
+  .tool-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px}
+  .num{
+    flex:0 0 auto;
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    font-family:"Playfair Display", Georgia, serif;
+    font-weight:700;
+    font-size:1.3rem;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--gold);
+    margin-top:2px;
+  }
+  @media (prefers-color-scheme: dark){
+    .num{background:var(--navy-2)}
+  }
+  .tool h2{
+    font-family:"Playfair Display", Georgia, serif;
+    font-weight:700;
+    font-size:clamp(1.45rem, 4vw, 1.8rem);
+    line-height:1.2;
+    margin:0;
+    color:var(--ink);
+  }
+  .tool .kicker{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    margin:0 0 4px;
+  }
+  @media (prefers-color-scheme: dark){ .tool .kicker{color:var(--gold)} }
+  .instruction{
+    color:var(--muted);
+    font-size:1rem;
+    margin:8px 0 18px 62px;
+  }
+  @media (max-width:560px){
+    .instruction{margin-left:0}
+    .tool{padding:22px 18px 24px}
+  }
+
+  .prompt-box{
+    background:var(--prompt-bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .prompt-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:10px 14px;
+    border-bottom:1px solid var(--line);
+    background:rgba(185,148,70,.08);
+  }
+  .prompt-label{
+    font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .copy-btn{
+    flex:0 0 auto;
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    background:var(--gold);
+    color:var(--navy);
+    font-family:"DM Sans",sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    padding:10px 20px;
+    min-height:44px;
+    border-radius:8px;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s ease, transform .1s ease;
+  }
+  .copy-btn:hover{background:#cda959}
+  .copy-btn:active{transform:scale(.97)}
+  .copy-btn:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+  .copy-btn.copied{background:var(--navy);color:var(--gold)}
+  .copy-btn svg{width:16px;height:16px;flex:0 0 auto}
+  pre.prompt{
+    margin:0;
+    padding:20px 22px;
+    font-family:"DM Sans",sans-serif;
+    font-size:.99rem;
+    line-height:1.65;
+    color:var(--prompt-ink);
+    white-space:pre-wrap;
+    word-wrap:break-word;
+  }
+  .action-step{
+    margin:16px 0 0 62px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .action-step span{
+    color:var(--gold-dark);
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-size:.82rem;
+    margin-right:6px;
+  }
+  @media (prefers-color-scheme: dark){ .action-step span{color:var(--gold)} }
+  @media (max-width:560px){ .action-step{margin-left:0} }
+
+  /* Tool 4 options */
+  .option{margin-top:22px}
+  .option:first-of-type{margin-top:4px}
+  .option h3{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:1.2rem;
+    font-weight:700;
+    margin:0 0 10px;
+    color:var(--ink);
+    display:flex;align-items:center;gap:10px;
+  }
+  .option h3 .opt-tag{
+    font-family:"DM Sans",sans-serif;
+    font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--navy);color:var(--gold);
+    padding:4px 10px;border-radius:999px;
+  }
+  .or-divider{
+    display:flex;align-items:center;gap:14px;
+    margin:22px 0 0;
+    color:var(--muted);
+    font-weight:700;letter-spacing:.2em;font-size:.8rem;text-transform:uppercase;
+  }
+  .or-divider::before,.or-divider::after{
+    content:"";flex:1;height:1px;background:var(--line);
+  }
+
+  /* Connection notice */
+  .notice{
+    margin-top:28px;
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);
+    border:1.5px solid var(--gold);
+    border-radius:14px;
+    padding:16px 20px;
+    font-size:1rem;
+    color:var(--ink);
+  }
+  .notice svg{flex:0 0 auto;width:24px;height:24px;color:var(--gold-dark);margin-top:1px}
+  @media (prefers-color-scheme: dark){ .notice svg{color:var(--gold)} }
+  /* Why it matters */
+  .benefit{
+    margin:-8px 0 18px 62px;
+    padding:12px 16px;
+    background:rgba(185,148,70,.10);
+    border:1px solid rgba(185,148,70,.45);
+    border-radius:10px;
+    color:var(--ink);
+    font-size:.98rem;
+  }
+  .benefit span{
+    color:var(--gold-dark);
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-size:.8rem;
+    margin-right:6px;
+  }
+  @media (prefers-color-scheme: dark){ .benefit span{color:var(--gold)} }
+  @media (max-width:560px){ .benefit{margin-left:0} }
+
+  footer{
+    text-align:center;
+    margin-top:44px;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  footer .foot-brand{
+    font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold-dark);font-size:.78rem;margin-bottom:6px;
+  }
+  @media (prefers-color-scheme: dark){ footer .foot-brand{color:var(--gold)} }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .copy-btn{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="brand"><a href="https://sonjarzoai.com/workshops" target="_blank" rel="noopener">SONJARZOAI&trade;</a></p>
+  <h1>Marketing with Muse Action Plan</h1>
+  <p class="subtitle">Marketing Toolkit</p>
+  <div class="rule"></div>
+  <p class="top-instruction">Copy the prompt, fill in the brackets, and paste it into Muse.</p>
+</header>
+
+<main class="wrap">
+
+  <div class="notice" role="note">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    <p style="margin:0"><strong>For best results,</strong> please make sure your Facebook or Instagram is connected to Meta Muse.</p>
+  </div>
+
+  <!-- ============ TOOL 1 ============ -->
+  <section class="tool" aria-labelledby="tool1-title">
+    <div class="tool-head">
+      <div class="num" aria-hidden="true">1</div>
+      <div>
+        <p class="kicker">Tool 1</p>
+        <h2 id="tool1-title">Strategy Dashboard</h2>
+      </div>
+    </div>
+    <p class="instruction">Copy the prompt, fill in the brackets, and paste it into Muse.</p>
+    <p class="benefit"><span>Why it matters:</span> You get one clear plan for what to post and when, so you can show up for your people with confidence.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-bar">
+        <span class="prompt-label">Prompt &middot; Strategy Dashboard</span>
+        <button class="copy-btn" type="button" data-copy="prompt-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="btn-text">Copy prompt</span>
+        </button>
+      </div>
+      <pre class="prompt" id="prompt-1">Please build me a social media strategy for [Facebook or Instagram].
+
+Step 1 — The account I want to learn from:
+- Name: [___]
+- Handle or profile link: [___]
+
+Step 2 — About me:
+- What I'm promoting: [___] (my book, product, service, or ministry)
+- Who I serve: [___]
+- My page or profile link: [___]
+- My goal: [___] (more customers, more bookings, more engagement, more sign-ups)
+- Time I have each week: [___]
+- My voice: [___] (warm, professional, funny, plain-spoken)
+
+Please do this:
+1. Look at both accounts and compare them: what each talks about, which formats get attention, where I stand apart, and what my audience needs.
+2. Turn what you find into my strategy: my content focus (3 to 4 themes), a 10-day playbook, quick wins I can do this week, and my next steps.
+3. Give me 10 to 12 post ideas I can use right away, in my voice.
+4. Give me a simple keyword funnel: one word people can comment to get my link by direct message.
+5. Tell me what NOT to do — the mistakes that would cost me reach.
+6. Build all of this into one shareable dashboard page I can open and share, with the comparison, my content focus, 10-day playbook, post ideas, keyword funnel, what NOT to do, quick wins, and next steps.</pre>
+    </div>
+  </section>
+
+  <!-- ============ TOOL 2 ============ -->
+  <section class="tool" aria-labelledby="tool2-title">
+    <div class="tool-head">
+      <div class="num" aria-hidden="true">2</div>
+      <div>
+        <p class="kicker">Tool 2</p>
+        <h2 id="tool2-title">Customer Language Bank</h2>
+      </div>
+    </div>
+    <p class="instruction">Copy the prompt, fill in the brackets, and paste it into Muse.</p>
+    <p class="benefit"><span>Why it matters:</span> People buy when they feel understood. The fastest way to show you understand them is to use their exact words.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-bar">
+        <span class="prompt-label">Prompt &middot; Customer Language Bank</span>
+        <button class="copy-btn" type="button" data-copy="prompt-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="btn-text">Copy prompt</span>
+        </button>
+      </div>
+      <pre class="prompt" id="prompt-2">I sell [product] to [target customer].
+
+The main problem it solves is [problem].
+
+Search these Facebook Groups and Instagram accounts: [list 2–3 groups or accounts].
+
+Collect at least 30 real quotes, exactly as written.
+
+Group them into frustrations, desired outcomes, objections, and things already tried that did not work.
+
+For each theme, list the 3 phrases that come up most often.
+
+Then give me 10 ad hooks in their wording, not marketing language.
+
+Weekly update: every Monday, check the same groups and accounts for the past week and add new phrases.
+
+Then create a dashboard: build all of this into one shareable dashboard page I can open and share.</pre>
+    </div>
+    <p class="action-step"><span>Optional:</span> Keep the weekly update line only if you want Muse to check back every Monday. Delete it if you only want a one-time search.</p>
+  </section>
+
+  <!-- ============ TOOL 3 ============ -->
+  <section class="tool" aria-labelledby="tool3-title">
+    <div class="tool-head">
+      <div class="num" aria-hidden="true">3</div>
+      <div>
+        <p class="kicker">Tool 3</p>
+        <h2 id="tool3-title">7 Day Content Calendar</h2>
+      </div>
+    </div>
+    <p class="instruction">Copy the prompt, fill in the brackets, and paste it into Muse.</p>
+    <p class="benefit"><span>Why it matters:</span> Consistency builds trust, and a plan beats willpower. When the week is already drafted, showing up is easy.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-bar">
+        <span class="prompt-label">Prompt &middot; 7 Day Content Calendar</span>
+        <button class="copy-btn" type="button" data-copy="prompt-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="btn-text">Copy prompt</span>
+        </button>
+      </div>
+      <pre class="prompt" id="prompt-3">Create a 7 day content calendar for [event, service, book, etc. name].
+
+Use these 4 themes: education, stories, proof, and invitations.
+
+Give me one post idea per day with a hook, a main point, and a call to action.
+
+Also suggest an image and the prompt to create the image for each day.
+
+Then create a dashboard: build all of this into one shareable dashboard page I can open and share.</pre>
+    </div>
+    <p class="action-step"><span>Action Step:</span> Run the prompt</p>
+  </section>
+
+  <!-- ============ TOOL 4 ============ -->
+  <section class="tool" aria-labelledby="tool4-title">
+    <div class="tool-head">
+      <div class="num" aria-hidden="true">4</div>
+      <div>
+        <p class="kicker">Tool 4</p>
+        <h2 id="tool4-title">Finding Your Next Clients One Conversation at a Time</h2>
+      </div>
+    </div>
+    <p class="instruction">Choose one: search Facebook <strong>or</strong> search Instagram. Copy the prompt, fill in the brackets, and paste it into Muse.</p>
+    <p class="benefit"><span>Why it matters:</span> Your next clients are already asking for help in groups and feeds you&rsquo;re part of. A helpful answer beats a cold pitch.</p>
+
+    <div class="option">
+      <h3><span class="opt-tag">Option A</span> Search Facebook</h3>
+      <div class="prompt-box">
+        <div class="prompt-bar">
+          <span class="prompt-label">Prompt &middot; Search Facebook</span>
+          <button class="copy-btn" type="button" data-copy="prompt-4a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="btn-text">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt" id="prompt-4a">Using what you know about my business or project [or add information here about your business or project]
+
+Search the Facebook group [name of my group] that I am a member of, or groups I should join if I am not already a member, for recent posts where someone is asking for help, a recommendation, or advice about these topics: [the things my people ask about].
+
+Show me up to 10 matching posts. For each one, give me: a one-line summary of what the person asked, why it could be a good fit for what I offer, and the direct link to the post.
+
+Skip posts where the person is selling something themselves, and skip anything that looks like an argument. Most promising first, please.
+
+For any group I am not a member of yet, tell me so I can join it.
+
+Then create a dashboard: build all of this into one shareable dashboard page I can open and share.</pre>
+      </div>
+    </div>
+
+    <div class="or-divider" aria-hidden="true">or</div>
+
+    <div class="option">
+      <h3><span class="opt-tag">Option B</span> Search Instagram</h3>
+      <div class="prompt-box">
+        <div class="prompt-bar">
+          <span class="prompt-label">Prompt &middot; Search Instagram</span>
+          <button class="copy-btn" type="button" data-copy="prompt-4b">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="btn-text">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt" id="prompt-4b">Using what you know about my business or project [or add information here about your business or project]
+
+Search the Instagram accounts I am following, or accounts I should be following if I am not already, for recent posts where someone is asking for help, a recommendation, or advice about these topics: [the things my people ask about].
+
+Show me up to 10 matching posts. For each one, give me: a one-line summary of what the person asked, why it could be a good fit for what I offer, and the direct link to the post.
+
+Skip posts where the person is selling something themselves, and skip anything that looks like an argument. Most promising first, please.
+
+For any account I am not following yet, tell me so I can follow it.
+
+Then create a dashboard: build all of this into one shareable dashboard page I can open and share.</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="foot-brand"><a href="https://sonjarzoai.com/workshops" target="_blank" rel="noopener">SONJARZOAI&trade;</a></p>
+    <p>Marketing with Muse &middot; Marketing Toolkit</p>
+    <p class="copyright">&copy; 2026 SONJARZOAI&trade;</p>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, ta.value.length);
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    function showCopied(btn) {
+      var label = btn.querySelector('.btn-text');
+      var original = label.textContent;
+      btn.classList.add('copied');
+      label.textContent = 'Copied \u2713';
+      setTimeout(function () {
+        btn.classList.remove('copied');
+        label.textContent = original;
+      }, 2000);
+    }
+
+    var buttons = document.querySelectorAll('.copy-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        var btn = this;
+        var target = document.getElementById(btn.getAttribute('data-copy'));
+        if (!target) return;
+        var text = target.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showCopied(btn);
+          }, function () {
+            if (fallbackCopy(text)) showCopied(btn);
+          });
+        } else {
+          if (fallbackCopy(text)) showCopied(btn);
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
